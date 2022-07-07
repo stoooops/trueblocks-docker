@@ -9,6 +9,8 @@ ifndef TB_INDEXPATH
 $(error "Must set TB_INDEXPATH")
 endif
 
+UPSTREAM_VER=debug
+
 
 .PHONY: build
 
@@ -17,7 +19,10 @@ all: build
 
 
 build:
-	docker build ./build --tag=$(DOCKER_TAG)
+	docker build \
+		--build-arg UPSTREAM_VER=$(UPSTREAM_VER) \
+		--tag=$(DOCKER_TAG) \
+		./build
 
 
 status: build
