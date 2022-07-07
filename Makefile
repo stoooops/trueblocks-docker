@@ -9,6 +9,10 @@ ifndef TB_INDEXPATH
 $(error "Must set TB_INDEXPATH")
 endif
 
+
+.PHONY: build
+
+
 all: build
 
 
@@ -16,7 +20,7 @@ build:
 	docker build ./build --tag=$(DOCKER_TAG)
 
 
-status:
+status: build
 	docker rm -f $(DOCKER_CONTAINER)
 	docker run \
 		--interactive \
@@ -29,7 +33,7 @@ status:
 		$(DOCKER_TAG) chifra status --terse
 
 
-serve:
+serve: build
 	docker rm -f $(DOCKER_CONTAINER)
 	docker run \
 		--interactive \
