@@ -14,7 +14,7 @@ ARG UPSTREAM_VER
 # Clone and make TrueBlocks Core
 # make -j 5 is a fairly safe number
 RUN git clone -b "${UPSTREAM_VER:-master}" --single-branch --progress --depth 1 \
-        https://github.com/TrueBlocks/trueblocks-core.git  && \
+        https://github.com/stoooops/trueblocks-core.git  && \
         cd trueblocks-core && mkdir build && cd build && cmake ../src && make -j 5
 
 # Switch to alpine container
