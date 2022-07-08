@@ -28,8 +28,10 @@ build:
 status: build
 	docker rm -f $(DOCKER_CONTAINER)
 	docker run \
+		--tty \
 		--interactive \
 		--rm \
+		--network "host" \
 		--name trueblocks-core \
 		--env-file ./.env \
 		--publish 8081:8080 \
@@ -41,8 +43,10 @@ status: build
 serve: build
 	docker rm -f $(DOCKER_CONTAINER)
 	docker run \
+		--tty \
 		--interactive \
 		--rm \
+		--network "host" \
 		--name trueblocks-core \
 		--env-file ./.env \
 		--publish 8081:8080 \
