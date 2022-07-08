@@ -43,4 +43,4 @@ ARG SERVE_PORT=8080
 EXPOSE ${SERVE_PORT}
 
 # Run entrypoint script
-ENTRYPOINT bash /root/core.entrypoint.sh
+ENTRYPOINT ["/root/core.entrypoint.sh"]
